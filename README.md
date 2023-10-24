@@ -1,7 +1,7 @@
 # 🍿 usePopcorn - React Movie Manager
 
 ## Description:
-usePopcorn is a React-based web app that simplifies movie management. Explore movies, view details, rate them, and maintain a watched list. The project highlights React hooks (useState and useEffect), closures, and race condition handling.
+usePopcorn is a React-based web app that simplifies movie management. It leverages The Open Movie Database (OMDb) API to explore movies, view details, rate them, and maintain a watched list. The project highlights React hooks (useState and useEffect), closures, and race condition handling.
 
 ### Key Features:
 
@@ -20,4 +20,6 @@ usePopcorn is a React-based web app that simplifies movie management. Explore mo
 - **Closures:** Effective variable management with closures.
 - **Race Condition Handling:** Smart handling of asynchronous requests with AbortController
 
+
+https://github.com/dawidryskala/usePopcorn/assets/141305850/54951e48-f63c-4d13-910e-23aca876f076
 
