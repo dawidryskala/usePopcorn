@@ -23,3 +23,8 @@ usePopcorn is a React-based web app that simplifies movie management. It leverag
 
 https://github.com/dawidryskala/usePopcorn/assets/141305850/54951e48-f63c-4d13-910e-23aca876f076
 
+
+## Race condition handling
+
+https://github.com/dawidryskala/usePopcorn/assets/141305850/c46f0e3c-c83f-4f47-8cf8-ee25c866b9d2
+
