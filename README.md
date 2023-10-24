@@ -4,12 +4,15 @@
 usePopcorn is a React-based web app that simplifies movie management. Explore movies, view details, rate them, and maintain a watched list. The project highlights React hooks (useState and useEffect), closures, and race condition handling.
 
 ## Key Features:
-### 🎥 Movie Search: Find and explore movies.
-###
-#### 📃 **Movie List:** Display search results and details.
-###
-#### 📈 **Movie Details:** Access in-depth information and add to watched list.
-###
+### 🎥 Movie Search: 
+##### Find and explore movies.
+
+#### 📃 **Movie List:** 
+##### Display search results and details.
+
+#### 📈 **Movie Details:** 
+##### Access in-depth information and add to watched list.
+
 #### 👀 **Watched List:** Keep track of watched movies and their ratings.
 ###
 #### 🛠️ **Error Handling:** Graceful error management.
