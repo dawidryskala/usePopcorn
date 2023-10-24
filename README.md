@@ -5,7 +5,7 @@ usePopcorn is a React-based web app that simplifies movie management. Explore mo
 
 ## Key Features:
 ### 🎥 Movie Search: 
-####Find and explore movies.
+#### Find and explore movies.
 
 #### 📃 **Movie List:** Display search results and details.
 #### 📈 **Movie Details:** Access in-depth information and add to watched list.
