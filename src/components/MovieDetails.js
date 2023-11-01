@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import StarRaiting from "./StarRating";
 import { KEY } from "./App";
 import { Loader } from "./Loader";
+import { useKey } from "./useKey";
 
 export function MovieDetails({
   selectedId,
@@ -13,6 +14,18 @@ export function MovieDetails({
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
+
+  const countRef = useRef(0);
+
+  // we are not allow to mutate ref in render logic
+  useEffect(
+    function () {
+      // because useEffect we also run on mount so to avoid adding one
+      // when component mount first time or rerender page we use if
+      if (userRating) countRef.current++;
+    },
+    [userRating]
+  );
 
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   // ---------- ?. optional chaning, because it could not be on the list
@@ -34,6 +47,25 @@ export function MovieDetails({
     Genre: genre,
   } = movie;
 
+  // 161. The rules of Hooks in practice
+  // if (imdbRating > 8) [isTop, setIsTop] = useState(true);
+  // if (imdbRating > 8) return <p>Greatest ever!</p>;
+
+  // const [isTop, setIsTop] = useState(imdbRating > 8);
+  // console.log(isTop);
+
+  // useEffect(
+  //   function () {
+  //     setIsTop(imdbRating > 8);
+  //   },
+  //   [imdbRating]
+  // );
+
+  const isTop = imdbRating > 8;
+  console.log(isTop);
+
+  const [avgRating, setAvgRating] = useState(0);
+
   function handleAdd() {
     const newMovie = {
       imdbID: selectedId,
@@ -43,27 +75,23 @@ export function MovieDetails({
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(" ").at(0)),
       userRating,
+      countRaitingDecisions: countRef.current,
     };
 
     onAddWatched(newMovie);
     onCloseMovie();
+
+    // 161. More deatail of useState
+    // setAvgRating(Number(imdbRating));
+    // async!!! we dont get  access to the updated state right
+    // after doing that, so right after we call the  state updating function
+
+    // Callback function have access to the asyncchronism function
+    // setAvgRating((x) => (x + userRating) / 2); // x current state value of avgRating
   }
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (e.code === "Escape") {
-          onCloseMovie();
-        }
-      }
-      document.addEventListener("keydown", callback);
-
-      return function () {
-        document.removeEventListener("keydown", callback);
-      };
-    },
-    [onCloseMovie]
-  );
+  // we allow react to call the onCloseMovie later on
+  useKey("Escape", onCloseMovie);
 
   useEffect(
     function () {
@@ -126,6 +154,8 @@ export function MovieDetails({
                 </p>
               </div>
             </header>
+
+            {/* <p>{avgRating}</p> */}
 
             <section>
               <div className="rating">
